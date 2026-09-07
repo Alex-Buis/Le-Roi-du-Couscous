@@ -1,0 +1,260 @@
+/* ---------- Tokens ---------- */
+:root{
+  --sand: #F3E6C8;
+  --sand-deep: #E9D6A8;
+  --night: #1B1E3D;
+  --night-deep: #12142B;
+  --terracotta: #C2440E;
+  --terracotta-deep: #9A350A;
+  --magenta: #C71F6E;
+  --gold: #E3A438;
+  --ink: #2A190C;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  --max-w: 1120px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--sand);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+h1,h2,h3{font-family:var(--serif);margin:0 0 .5em;line-height:1.1;font-weight:600;}
+p{line-height:1.6;}
+
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
+
+/* ---------- Dune line ---------- */
+.dune-line{
+  height:6px;
+  background:linear-gradient(90deg, var(--terracotta) 0%, var(--gold) 35%, var(--magenta) 68%, var(--night) 100%);
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(243,230,200,.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(42,25,12,.1);
+}
+.header-inner{
+  display:flex; align-items:center; gap:20px;
+  padding-top:12px; padding-bottom:12px;
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand-mark{width:38px; height:38px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 2px var(--sand), 0 0 0 3px var(--terracotta);}
+.brand-name{font-family:var(--serif); font-weight:600; font-size:1.15rem; color:var(--ink);}
+.main-nav{display:flex; gap:26px; margin-left:auto;}
+.main-nav a{text-decoration:none; font-size:.95rem; font-weight:500; color:var(--ink); opacity:.8; position:relative;}
+.main-nav a:hover{opacity:1;}
+.header-cta{white-space:nowrap;}
+.nav-toggle{
+  display:none; margin-left:auto; width:38px; height:38px;
+  background:none; border:none; padding:0; cursor:pointer;
+  flex-direction:column; justify-content:center; gap:5px;
+}
+.nav-toggle span{display:block; height:2px; width:22px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.btn{
+  display:inline-block;
+  padding:.75em 1.5em;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+  border:1.5px solid transparent;
+  transition:transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--terracotta); color:var(--sand);}
+.btn-primary:hover{background:var(--terracotta-deep);}
+.btn-outline{border-color:var(--ink); color:var(--ink);}
+.btn-outline:hover{background:var(--ink); color:var(--sand);}
+.btn-ghost{border-color:rgba(42,25,12,.35); color:var(--ink); padding:.6em 1.2em; font-size:.9rem;}
+.btn-ghost:hover{border-color:var(--ink);}
+.btn-on-dark{border-color:rgba(243,230,200,.5); color:var(--sand);}
+.btn-on-dark:hover{background:var(--sand); color:var(--night);}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:radial-gradient(120% 100% at 50% 0%, var(--sand-deep) 0%, var(--sand) 55%);
+  padding:88px 0 64px;
+}
+.hero-arch{
+  position:absolute; inset:auto 0 -1px 0; height:120px;
+  background:var(--night);
+  clip-path: path('M0,120 L0,60 C 0,20 40,0 90,0 C 140,0 180,20 180,60 L 180,120 Z');
+  display:none;
+}
+.hero-inner{position:relative; z-index:1; text-align:left; max-width:760px;}
+.hero-kicker{
+  font-weight:700; letter-spacing:.02em; color:var(--terracotta);
+  margin:0 0 14px; font-size:.95rem;
+}
+.hero h1{font-size:clamp(2.1rem, 4.2vw, 3.2rem); color:var(--ink);}
+.hero-lede{font-size:1.08rem; color:rgba(42,25,12,.8); max-width:60ch; margin-bottom:32px;}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:48px;}
+.hero-stats{display:flex; gap:40px; flex-wrap:wrap; border-top:1px solid rgba(42,25,12,.15); padding-top:28px;}
+.stat{display:flex; flex-direction:column;}
+.stat-num{font-family:var(--serif); font-size:1.5rem; font-weight:600;}
+.stat-label{font-size:.85rem; opacity:.7;}
+
+/* ---------- Maison ---------- */
+.maison{padding:88px 0;}
+.section-kicker{
+  font-weight:700; color:var(--terracotta); font-size:.9rem; margin-bottom:10px;
+}
+.section-kicker--light{color:var(--gold);}
+.maison-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "photo text"
+    "wide  wide";
+  gap:28px 48px;
+  align-items:center;
+}
+.maison-photo img{border-radius:14px; box-shadow:0 18px 40px -20px rgba(18,20,43,.45);}
+.maison-photo{grid-area:photo;}
+.maison-photo--wide{grid-area:wide;}
+.maison-photo--wide img{width:100%; height:340px; object-fit:cover;}
+.maison-text{grid-area:text;}
+.maison-text h2{font-size:clamp(1.6rem,2.6vw,2.1rem);}
+.maison-text p{color:rgba(42,25,12,.82); max-width:52ch;}
+.maison-text p + p{margin-top:1em;}
+
+/* ---------- Carte ---------- */
+.carte{
+  background:var(--night);
+  color:var(--sand);
+  padding:88px 0;
+  position:relative;
+}
+.carte-title{font-size:clamp(1.7rem,3vw,2.3rem); color:var(--sand);}
+.carte-intro{max-width:62ch; color:rgba(243,230,200,.75); margin-bottom:44px;}
+.menu-list{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:1px;
+  background:rgba(243,230,200,.14);
+  border:1px solid rgba(243,230,200,.14);
+  border-radius:14px;
+  overflow:hidden;
+}
+.menu-item{
+  background:var(--night);
+  padding:26px 28px;
+}
+.menu-item--feature{background:linear-gradient(135deg, var(--terracotta-deep), var(--magenta));}
+.menu-item-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:6px;}
+.menu-item h3{font-size:1.05rem; margin:0; color:var(--sand); display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+.menu-tag{font-family:var(--sans); font-size:.7rem; font-weight:600; color:var(--gold); border:1px solid rgba(227,164,56,.5); border-radius:999px; padding:.15em .6em;}
+.menu-item--feature .menu-tag{color:var(--sand); border-color:rgba(243,230,200,.5);}
+.menu-price{font-family:var(--serif); font-weight:600; color:var(--gold); white-space:nowrap;}
+.menu-item--feature .menu-price{color:var(--sand);}
+.menu-item p{margin:0; font-size:.92rem; color:rgba(243,230,200,.7);}
+.menu-item--feature p{color:rgba(243,230,200,.9);}
+
+.carte-footnote{
+  margin-top:36px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  color:rgba(243,230,200,.65); font-size:.9rem;
+}
+.link-arrow{text-decoration:none; font-weight:600; color:var(--gold); white-space:nowrap;}
+.link-arrow::after{content:" →"; }
+
+/* ---------- Horaires ---------- */
+.horaires{padding:88px 0;}
+.horaires-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:48px;
+  align-items:start;
+}
+.horaires h2{font-size:clamp(1.6rem,2.6vw,2.1rem); max-width:16ch;}
+.horaires-text{color:rgba(42,25,12,.8); max-width:48ch; margin-bottom:26px;}
+.horaires-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 18px 40px -24px rgba(18,20,43,.35);
+}
+.horaires-table th,.horaires-table td{
+  text-align:left; padding:14px 20px; font-size:.95rem;
+  border-bottom:1px solid rgba(42,25,12,.08);
+}
+.horaires-table th{font-weight:600; color:var(--ink);}
+.horaires-table td{color:rgba(42,25,12,.75);}
+.horaires-table tr:last-child th,.horaires-table tr:last-child td{border-bottom:none;}
+.horaires-table tr.closed td{color:var(--terracotta); font-weight:600;}
+.horaires-note{grid-column:1/-1; font-size:.85rem; color:rgba(42,25,12,.55); margin-top:-8px;}
+
+/* ---------- Avis ---------- */
+.avis{background:var(--sand-deep); padding:72px 0;}
+.avis-grid{display:grid; grid-template-columns:auto 1fr; gap:44px; align-items:center;}
+.avis-score{display:flex; flex-direction:column; align-items:center; min-width:160px;}
+.avis-num{font-family:var(--serif); font-size:3rem; font-weight:700; color:var(--terracotta);}
+.avis-stars{color:var(--gold); font-size:1.2rem; letter-spacing:2px;}
+.avis-count{font-size:.85rem; opacity:.7; margin-top:6px;}
+.avis-quote p{font-family:var(--serif); font-size:1.3rem; font-weight:500; line-height:1.4; margin:0 0 .6em; max-width:46ch;}
+.avis-quote cite{font-style:normal; font-size:.85rem; opacity:.6;}
+
+/* ---------- Contact ---------- */
+.contact{background:var(--night-deep); color:var(--sand); padding:88px 0;}
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:stretch;}
+.contact-card h2{font-size:clamp(1.6rem,2.8vw,2.2rem); color:var(--sand);}
+.contact-list{list-style:none; padding:0; margin:24px 0 32px; display:flex; flex-direction:column; gap:10px;}
+.contact-list a{color:var(--gold); text-decoration:none; font-weight:600;}
+.contact-map{border-radius:14px; overflow:hidden; min-height:280px;}
+.contact-map iframe{width:100%; height:100%; min-height:280px; border:0;}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--night-deep); color:rgba(243,230,200,.6); padding:26px 0 40px; border-top:1px solid rgba(243,230,200,.1);}
+.footer-inner p{margin:.2em 0; font-size:.85rem;}
+.footer-fine{opacity:.7;}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px){
+  .main-nav{
+    display:flex; flex-direction:column; gap:0;
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--sand); border-bottom:1px solid rgba(42,25,12,.1);
+    max-height:0; overflow:hidden;
+    transition:max-height .25s ease;
+  }
+  .main-nav.is-open{max-height:320px;}
+  .main-nav a{padding:14px 24px; border-top:1px solid rgba(42,25,12,.08);}
+  .nav-toggle{display:flex;}
+  .maison-grid{grid-template-columns:1fr; grid-template-areas:"photo" "text" "wide";}
+  .menu-list{grid-template-columns:1fr;}
+  .horaires-grid{grid-template-columns:1fr;}
+  .avis-grid{grid-template-columns:1fr; text-align:center;}
+  .avis-quote p{max-width:none;}
+  .contact-grid{grid-template-columns:1fr;}
+  .header-cta{display:none;}
+}
+
+@media (max-width: 520px){
+  .hero{padding:64px 0 44px;}
+  .hero-stats{gap:24px;}
+  .maison,.carte,.horaires,.avis,.contact{padding-top:56px; padding-bottom:56px;}
+}
